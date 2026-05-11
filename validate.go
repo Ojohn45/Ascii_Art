@@ -8,7 +8,3 @@ func ValidateInput(input string) (rune, error) {
 	}
 	return 0, nil
 }
-
-// func main() {
-// fmt.Println(ValidateInput("dfsfhjhkjfgd"))
-// }
