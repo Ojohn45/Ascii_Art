@@ -7,17 +7,28 @@ import (
 )
 
 func LoadBanner(filename string) (map[rune][]string, error) {
-	fontMap := make(map[rune][]string)
+	// banner := "standard.txt"
+	// if len(os.Args) == 3 {
+	// 	banner = os.Args[2] + ".txt"
+	// }
+
+	font := make(map[rune][]string)
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
+
 	if len(data) == 0 {
-		return fontMap, errors.New("invalid character")
+		return font, errors.New("inavalid charater")
 	}
+
 	lines := strings.Split(string(data), "\n")
 	if len(lines) < 856 {
-		return fontMap, errors.New("invalid")
+		return font, errors.New("invalid")
 	}
-	return fontMap,nil 
+	for ch := ' '; ch <= '~'; ch++ {
+		start := (int(ch) - 32) * 9
+		font[ch] = lines[start+1 : start+9]
+	}
+	return font, nil
 }
