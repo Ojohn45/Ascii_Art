@@ -19,5 +19,5 @@ func LoadBanner(filename string) (map[rune][]string, error) {
 	if len(lines) < 856 {
 		return fontMap, errors.New("invalid")
 	}
-	return fontMap 
+	return fontMap,nil 
 }
